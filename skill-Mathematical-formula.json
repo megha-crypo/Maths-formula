@@ -1,0 +1,418 @@
+{
+  "intents": [
+    {
+      "intent": "cyli",
+      "examples": [
+        {
+          "text": "Volume of Cylinder"
+        },
+        {
+          "text": "Cylinder"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "cir1",
+      "examples": [
+        {
+          "text": "area of circle"
+        },
+        {
+          "text": "circle"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "pr1",
+      "examples": [
+        {
+          "text": "prism"
+        },
+        {
+          "text": "Volume of prism"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "sq1",
+      "examples": [
+        {
+          "text": "square"
+        },
+        {
+          "text": "area of square"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "sph1",
+      "examples": [
+        {
+          "text": "volume of sphere"
+        },
+        {
+          "text": "sphere"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "learn",
+      "examples": [
+        {
+          "text": "learn formula"
+        },
+        {
+          "text": "formula"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "area1",
+      "examples": [
+        {
+          "text": "learn to calculate the area"
+        },
+        {
+          "text": "calculate area"
+        },
+        {
+          "text": "area"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "vol1",
+      "examples": [
+        {
+          "text": "vol"
+        },
+        {
+          "text": "Volume"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "re1",
+      "examples": [
+        {
+          "text": "area of rectangle"
+        },
+        {
+          "text": "rectangle"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "par",
+      "examples": [
+        {
+          "text": "area of Parallelogram"
+        },
+        {
+          "text": "Parallelogram"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "tri1",
+      "examples": [
+        {
+          "text": "area of triangle"
+        },
+        {
+          "text": "Triangle"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "con",
+      "examples": [
+        {
+          "text": "volume of cones"
+        },
+        {
+          "text": "cones"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "catvol",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "cylinder",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "cones",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "prism",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "sphere",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "cat",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Area",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Volumes",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "catare",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "parallelogram",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "rectangle",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "triangle",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "square",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Circle",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "tri",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Area of Triangle is\n(1/2) × base × height\nAny other Formula"
+              },
+              {
+                "text": ""
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_8_1590300242953",
+      "conditions": "@catare:triangle",
+      "dialog_node": "node_2_1590300493608"
+    },
+    {
+      "type": "standard",
+      "title": "want",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Options are\nArea \nVolumes\nEnter any one"
+              },
+              {
+                "text": ""
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "Welcome",
+      "conditions": "#learn",
+      "dialog_node": "node_7_1590299701500"
+    },
+    {
+      "type": "standard",
+      "title": "vol",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Volume of sphere is\n(4/3) ×3.14×radius×radius×radius"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_2_1590300493608",
+      "conditions": "@catvol:sphere",
+      "dialog_node": "node_7_1590300723257"
+    },
+    {
+      "type": "standard",
+      "title": "square1",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Area of Square is\n\nSide×Side\n\nAny others formula "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_9_1590300126855",
+      "conditions": "@catare:square",
+      "dialog_node": "node_8_1590300242953"
+    },
+    {
+      "type": "standard",
+      "title": "are",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Options are\nArea of Rectangle\nArea of Square\nArea of Circle\nArea of Triangle\nEnter any one"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_7_1590299701500",
+      "conditions": "@cat:Area",
+      "dialog_node": "node_9_1590300126855",
+      "previous_sibling": "node_4_1590299849051"
+    },
+    {
+      "type": "standard",
+      "title": "are",
+      "parent": "node_7_1590299701500",
+      "dialog_node": "node_4_1590299849051"
+    },
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "Welcome",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello I am an assistant to help u in learning formula regarding area and volumes of certain shapes and solids. How can I help you?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "system_entities": {
+      "enabled": true
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "Mathematical formula",
+  "language": "en",
+  "description": ""
+}
